@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul class="list-unstyled">
+    <li class="media pb-3 pt-3 mb-3 border-bottom" th:each="map:${discussPosts}">
+        <a href="#">
+            <img th:src="${map.user}" class="mr-4 rounded-circle" alt="用户头像" style="width:50px;height:50px;">
+        </a>
+        <div class="media-body">
+            <h6 class="mt-0 mb-3">
+                <!--如果跳转路径有变量，要加上||。注意取变量是用$-->
+                <a th:href="@{|/discuss/detail/${map.post.id}|}" th:utext="${map.post.title}">备战春招，面试刷题跟他复习，一个月全搞定！</a>
+                <span class="badge badge-secondary bg-primary" th:if="${map.post.type==1}">置顶</span>
+                <span class="badge badge-secondary bg-danger" th:if="${map.post.status==1}">精华</span>
+            </h6>
+            <div class="text-muted font-size-12">
+                <u class="mr-3" th:utext="${map.user}">寒江雪</u> 发布于 <b th:text="${#dates.format(map.post.createTime,'yyyy-MM-dd HH:mm:ss')}">2019-04-15 15:32:18</b>
+                <ul class="d-inline float-right">
+                    <li class="d-inline ml-2">赞 <span th:text="${map}">11</span></li>
+                    <li class="d-inline ml-2">|</li>
+                    <li class="d-inline ml-2">回帖 <span th:text="${map.post.commentCount}">7</span></li>
+                </ul>
+            </div>
+        </div>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,40 @@
+logging:
+  level:
+    com.example.demo.dao: DEBUG
+
+
+server:
+  port: 9999
+  servlet:
+    session:
+      timeout: 30
+  tomcat:
+    uri-encoding: utf-8
+myenvironment:
+  name: 开发环境
+
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/community?serverTimzone=UTC&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mail:
+    host: smtp.qq.com
+    username: 2848763719@qq.com
+    password: lvatrffpuptxdfig
+    properties.mail.smtp.port: 465
+    from: 2848763719@qq.com
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.ssl.enable: true
+    default-encoding: UTF-8
+
+mybatis:
+  type-aliases-package: com.example.demo.entity
+  mapper-locations:
+    - classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+
